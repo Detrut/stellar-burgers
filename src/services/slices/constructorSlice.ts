@@ -38,7 +38,9 @@ export const constructorSlice = createSlice({
   name: 'constructorBurger',
   initialState,
   selectors: {
-    getConstructorState: (state) => state
+    getConstructorItems: (state) => state.constructorItems,
+    getOrderRequest: (state) => state.orderRequest,
+    getOrderModalData: (state) => state.orderModalData
   },
   reducers: {
     addIngredient: {
@@ -116,5 +118,6 @@ export const {
   resetModal
 } = constructorSlice.actions;
 
-export const { getConstructorState } = constructorSlice.selectors;
+export const { getConstructorItems, getOrderRequest, getOrderModalData } =
+  constructorSlice.selectors;
 export default constructorSlice.reducer;

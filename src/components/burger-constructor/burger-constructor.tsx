@@ -4,7 +4,9 @@ import { BurgerConstructorUI } from '@ui';
 import { useDispatch, useSelector } from '../../services/store';
 import { useNavigate } from 'react-router-dom';
 import {
-  getConstructorState,
+  getConstructorItems,
+  getOrderRequest,
+  getOrderModalData,
   orderBurger,
   setRequest,
   resetModal
@@ -13,8 +15,9 @@ import { getUserState } from '../../services/slices/userSlice';
 
 export const BurgerConstructor: FC = () => {
   const navigate = useNavigate();
-  const { constructorItems, orderModalData, orderRequest } =
-    useSelector(getConstructorState);
+  const constructorItems = useSelector(getConstructorItems);
+  const orderRequest = useSelector(getOrderRequest);
+  const orderModalData = useSelector(getOrderModalData);
   const isAuth = useSelector(getUserState).isAuthenticated;
 
   const dispatch = useDispatch();

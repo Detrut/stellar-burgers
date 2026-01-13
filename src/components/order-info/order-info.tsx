@@ -8,11 +8,11 @@ import {
   fetchOrderByNumber,
   getOrderState
 } from '../../services/slices/orderSlice';
-import { getIngredientState } from '../../services/slices/ingredientsSlice';
+import { ingredientList } from '../../services/slices/ingredientsSlice';
 
 export const OrderInfo: FC = () => {
   const number = Number(useParams().number);
-  const { list } = useSelector(getIngredientState);
+  const list = useSelector(ingredientList);
   const { orderByNumberResponse, request } = useSelector(getOrderState);
   const dispatch = useDispatch();
 

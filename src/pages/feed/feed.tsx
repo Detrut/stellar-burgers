@@ -10,7 +10,7 @@ import {
   fetchFeeds
 } from '../../services/slices/feedSlice';
 import {
-  getIngredientState,
+  ingredientList,
   getIngredients
 } from '../../services/slices/ingredientsSlice';
 
@@ -18,7 +18,7 @@ export const Feed: FC = () => {
   const dispatch = useDispatch();
   const orders = useSelector(selectFeedOrders);
   const isLoading = useSelector(selectFeedLoading);
-  const ingredients = useSelector(getIngredientState);
+  const ingredients = useSelector(ingredientList);
   const hasLoaded = useRef(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const Feed: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!ingredients.list.length) {
+    if (!ingredients.length) {
       dispatch(getIngredients());
     }
   }, []);
@@ -38,7 +38,7 @@ export const Feed: FC = () => {
     dispatch(fetchFeeds());
   };
 
-  if (isLoading || !ingredients.list.length) {
+  if (isLoading || !ingredients.length) {
     return <Preloader />;
   }
 
