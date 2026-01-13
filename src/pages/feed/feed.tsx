@@ -9,10 +9,7 @@ import {
   selectFeedLoading,
   fetchFeeds
 } from '../../services/slices/feedSlice';
-import {
-  ingredientList,
-  getIngredients
-} from '../../services/slices/ingredientsSlice';
+import { ingredientList } from '../../services/slices/ingredientsSlice';
 
 export const Feed: FC = () => {
   const dispatch = useDispatch();
@@ -25,12 +22,6 @@ export const Feed: FC = () => {
     if (!hasLoaded.current && !isLoading) {
       hasLoaded.current = true;
       dispatch(fetchFeeds());
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!ingredients.length) {
-      dispatch(getIngredients());
     }
   }, []);
 
