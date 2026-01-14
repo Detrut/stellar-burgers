@@ -67,7 +67,19 @@ const App = () => {
         <Route element={<ProtectedRoute onlyUnAuth={false} />}>
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/orders' element={<ProfileOrders />} />
-          <Route path='/profile/orders/:number' element={<OrderInfo />} />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <div className={styles.detailPageWrap}>
+                <p
+                  className={`text text_type_main-large ${styles.detailHeader}`}
+                >
+                  {`#${location.pathname.match(/\d+/)}`}
+                </p>
+                <OrderInfo />
+              </div>
+            }
+          />
         </Route>
         <Route path='*' element={<NotFound404 />} />
       </Routes>
