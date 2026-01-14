@@ -169,8 +169,6 @@ export const userSlice = createSlice({
         state.error = null;
         state.request = false;
         state.userData = null;
-        // localStorage.clear();
-        // deleteCookie('accessToken');
       })
       .addCase(getOrdersAll.pending, (state) => {
         state.error = null;
